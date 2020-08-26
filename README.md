@@ -59,7 +59,11 @@ e will pull and run a Redis server with containerd using that client package.
  ```
  - install python 3 and docker sdk for python 
  ```
- 
+ - name: INstall python3 
+ command:"yum install python3-pip -y"
+ - name: docker sdk for python
+ command: pip3 install docker
+ ignore_errors: yes
  ```
 ### Install docker package
 ```
