@@ -69,8 +69,15 @@ e will pull and run a Redis server with containerd using that client package.
 ```
 - name: install docker --nobest
       command: "yum install docker-ce -y --nobest"
-'''
-
+```
+### Start docker service
+```
+- name: Start docker service
+  package:
+    name: docker
+    state: started
+    enable: yes
+```
 
  
  
