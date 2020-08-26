@@ -1,0 +1,27 @@
+- name: install docker repolist on rhce8
+  hosts: localhost
+  tasks:
+    - name: create repolist file on /etc/yum.repo.d/
+      file:
+        path: /etc/yum.repos.d/dockerFile.repo
+        state: touch
+    - name: add docker repolist
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker.repo
+    - name: install cointened - prerequis for docker installation
+      package:
+        name: containerd
+        state: absent
+    - name:  install containerd
+      package:
+        name: https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
+        state: present
+    - name: install docker ce
+      package:
+        name: podman-docker, buildah-tests.x86_64
+        state: present
+    - name: start docker service
+      service:
+        name: docker
+        state: started
