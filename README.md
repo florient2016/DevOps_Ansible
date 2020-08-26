@@ -1,4 +1,4 @@
-# Devop_Ansible
+# Devops_Ansible
 install and configure docker using ansible playbook
 ## Automate Docker with Ansible 
 Ansible is the way to automate Docker in your environment. Ansible enables you to operationalize 
